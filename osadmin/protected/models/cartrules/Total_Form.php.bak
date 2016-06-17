@@ -1,0 +1,26 @@
+
+
+
+<?php
+ 
+return array('title' => 'Cart Rules Total',
+ 'showErrorSummary'  => true,
+ 
+'elements' => array(
+'CARTRULE_TOTAL_TITLE' => array(
+'type' => 'text',
+'maxlength' => '80',  'class'=>'controls'
+),
+
+'CARTRULE_TOTAL_STATUS' => array(
+'type' => 'text','hint' => 'If you want a reply, you must...','maxlength' => '80', 'class'=>'controls'
+),
+
+'CARTRULE_TOTAL_SORT_ORDER' => array(
+'type' => 'text', 'class'=>'controls'
+)
+
+),
+);
+?>
+

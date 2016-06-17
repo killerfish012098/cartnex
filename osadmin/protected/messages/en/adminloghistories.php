@@ -1,0 +1,18 @@
+<?php
+// Heading
+$_['heading_title']          = 'Admin Log History';
+$_['heading_sub_title']      = 'Administrator';
+
+
+$_['column_first_name']        = 'First Name';
+$_['column_last_name']        = 'Last Name';
+$_['column_role']        = 'Role';
+$_['column_access_date']     = 'Accessed Date';
+$_['column_page_accessed']   = 'Page Accessed';
+$_['column_page_url']        = 'Page Url';
+$_['column_action'] = 'Action';
+$_['column_ip_address']      = 'Ip Address';
+
+return $_;
+
+?>

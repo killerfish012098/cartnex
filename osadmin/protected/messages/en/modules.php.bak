@@ -1,0 +1,41 @@
+<?php
+// Heading
+$_['heading_title']          			= 'Modules';
+$_['heading_title_manufacturer']        = 'Manufacturer';
+$_['heading_title_newsletter']          = 'News Letter';
+$_['heading_title_slideshow']          = 'Slide Show';
+$_['heading_title_bestseller']          = 'Best Seller';
+$_['heading_title_recentlyviewed']      = 'Recently Viewed';
+$_['heading_title_special']          	= 'Special';
+$_['heading_title_account']          	= 'Account';
+$_['heading_title_facebookconnect']     = 'Facebook Connect';
+$_['heading_title_categoryproducts']    = 'Category Products';
+$_['heading_title_filter']          	= 'Filter';
+$_['heading_title_featured']          	= 'Featured';
+$_['heading_title_latest']          	= 'Latest';
+$_['heading_title_category']          	= 'Category';
+$_['heading_title_slideshow']          	= 'Slide Show';
+
+// Column
+$_['coulmn_firstname']     				= 'First Name';
+$_['coulmn_order_status_name'] 			= 'Order Status Name';
+
+// Entry
+$_['entry_banner'] 	                	= 'Banner';
+$_['entry_box_size'] 	            	= 'Box Size';
+$_['entry_limit'] 	                	= 'Title';
+$_['entry_limit'] 	                	= 'Limit';
+$_['entry_image'] 	                	= 'Image [ H * W]';
+$_['entry_layout'] 	                	= 'Layout';
+$_['entry_position'] 	            	= 'Position';
+$_['entry_sort_order'] 	            	= 'Sort Order';
+$_['entry_status'] 	                	= 'Status';
+$_['entry_action'] 	                	= 'Action';
+
+//
+$_['entry_add_more'] 	            	= 'Add';
+$_['entry_add_edit'] 	            	= 'Add/Edit Module';
+
+return $_;
+
+?>

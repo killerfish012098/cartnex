@@ -1,0 +1,77 @@
+<?php
+
+class Navigation extends CWidget {
+
+    public $menu = array();
+    private $top_category;
+    private $children_catetory;
+    public $id_language;
+    
+    public function init() {
+		$languages=Yii::app()->config->getData('languages');
+        $this->id_language = $languages[Yii::app()->session['language']]['id_language'];
+        return parent::init();
+    }
+
+    public function run()
+    {
+        $cache=Yii::app()->cache;
+        $this->menu=$cache->get('navigation_'.$this->id_language);
+        
+        if($this->menu===false)
+        {
+			$this->top_category = $this->getParentCategories();
+            foreach ($this->top_category as $topcategory) {
+                    $this->children_catetory = $this->getChildCategories($topcategory['id_category']);
+                    $children = array();
+
+                    foreach ($this->children_catetory as $childrencatetory) {
+                            $childCategoryName = "";
+                            $childCategoryName = Yii::app()->config->getData('CONFIG_STORE_SHOW_CATEGORY_PRODUCT_COUNT') == '1' ? $childrencatetory['name'] . "(" . $this->productCount($childrencatetory['id_category']) . ")" : $childrencatetory['name'];
+                            $children[] = array(
+                                    'name' => $childCategoryName,
+                                    'href' => Yii::app()->controller->createUrl('product/category', array("category_id" => $topcategory['id_category'] . "_" . $childrencatetory['id_category'])),
+                            );
+                    }
+
+                    $this->menu[top][$topcategory['top']][] = array(
+                            'name' => $topcategory['name'],
+                            'children' => $children,
+                            'category_id' => $topcategory['id_category'],
+                            'column' => $topcategory['column'] ? $topcategory['column'] : 1,
+                            'href' => Yii::app()->controller->createUrl('product/category', array("category_id" => $topcategory['id_category'])),
+                    );
+            }
+            /*if(Yii::app()->config->getData('CONFIG_STORE_SHOW_CATEGORY_PRODUCT_COUNT'))
+            {
+                    $dependency="SELECT concat(MAX(date_modified),'-',(select max(date_modified) from {{product}} where status=1)) as date_modified FROM {{category}}";
+            }else{
+                    //$dependency="SELECT MAX(date_modified) FROM {{category}} where status=1";
+					$dependency="SELECT MAX(date_modified) FROM {{category}}";
+            }*/
+			$dependency="SELECT concat(MAX(date_modified),'-',(select max(date_modified) from {{product}} where status=1),'-',(select max(date_modified) from {{configuration_group}} where type='config' and code='config')) as date_modified FROM {{category}}";
+            //echo "value of ".$dependency;
+                    //exit;
+            $cache->set('navigation_'.$this->id_language,$this->menu , 0, new CDbCacheDependency($dependency));
+        }
+        $this->render("navigation");
+    }
+    
+    public function getParentCategories() {
+
+        $command = Yii::app()->db->createCommand('SELECT c.top,c.id_category,cd.name,c.image,c.column FROM {{category_description}} cd , {{category}} c WHERE c.id_category=cd.id_category and cd.id_language="' . $this->id_language . '" and c.id_parent=0  and c.status=1 order by c.sort_order asc')->queryAll();
+        return $command;
+    }
+
+    public function getChildCategories($category_id) {
+
+        $command = Yii::app()->db->createCommand('SELECT c.id_category,cd.name FROM {{category_description}} cd , {{category}} c WHERE c.id_category=cd.id_category and cd.id_language="' . $this->id_language . '" and c.id_parent="' . $category_id . '" and c.status=1 order by c.sort_order asc')->queryAll();
+        return $command;
+    }
+
+    public function productCount($category_id) {
+        
+        $product = Yii::app()->db->createCommand('SELECT count(*) as count FROM {{product_category}} pc, {{product}} p WHERE p.id_product=pc.id_product and p.status=1 and pc.id_category=' . $category_id . ' and p.date_product_available <= NOW()')->queryScalar();
+        return $product['count'];
+    }
+}

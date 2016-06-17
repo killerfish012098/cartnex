@@ -1,0 +1,61 @@
+<?php
+ return array('title' => 'Cash On Delivery',
+    'showErrorSummary' => true,
+    'elements' => array(
+        '<div class="control-group span5 latble-divrequi">',
+        'PAYMENT_COD_TITLE' => array(
+            'type' => 'text',
+            'class' => 'controls'
+        ),
+		'</div>',
+        '<div class="control-group span5 latble-divrequi">',
+        'PAYMENT_COD_ORDER_STATUS_ID' => array('type' => 'dropdownlist','items'=>CHtml::listData(OrderStatus::getOrderStatuses(),'id_order_status', 'name'), 
+        //'hint' => 'If you want a reply, you must...', 
+        'class' => 'controls'
+        ),
+		'</div>',
+        '<div class="control-group span5 latble-divrequi">',
+        'PAYMENT_COD_REGION' => array('type' => 'dropdownlist','items'=>array_merge(array("0"=>"All Regions"),CHtml::listData(Region::getRegions(),'id_region', 'name')), 
+        //'hint' => 'If you want a reply, you must...', 
+        'class' => 'controls'
+        ),
+        '</div>',
+        '<div class="control-group span5 latble-divrequi">',
+        'PAYMENT_COD_STATUS' => array('type' => 'dropdownlist','items'=>array('1'=>'Enable','0'=>'Disable'), 
+        //'hint' => 'If you want a reply, you must...', 
+        'class' => 'controls'
+        ),
+        '</div>',
+        '<div class="control-group span5 latble-divrequi">',
+        'PAYMENT_COD_SORT_ORDER' => array(
+            'type' => 'text', 'class' => 'controls'
+        ),
+        '</div>'
+    ),
+);
+/*return array('title' => 'Contact Us',
+ 'showErrorSummary'  => true,
+'elements' => array(
+    
+'PAYMENT_COD_TITLE' => array(
+'type' => 'text',
+'maxlength' => '80'
+),
+'PAYMENT_COD_SORT_ORDER' => array(
+'type' => 'text','hint' => 'If you want a reply, you must...','maxlength' => '80'
+),
+'PAYMENT_COD_ORDER_STATUS_ID' => array(
+'type' => 'text',
+'maxlength' => '120'
+),
+'PAYMENT_COD_REGION' => array(
+'type' => 'text',
+'attributes' => array('rows'=>20,'cols'=>80)
+),
+'PAYMENT_COD_STATUS' => array(
+'type' => 'text',
+'attributes' => array('rows'=>20,'cols'=>80)
+)
+),
+
+);*/

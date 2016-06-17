@@ -1,0 +1,74 @@
+<i>Use below keywords in mail to get populate data automatically.</i><br/>
+[%store_name%, %store_logo%,%store_url%, %store_owner%, %store_address%, %store_telephone%, %store_fax%, %store_support_email%, %store_customer_login_url%, %store_customer_register_url%, %store_logo_path%]
+<br/>
+<div class="row-fluid">
+ <div class="tab-pane active" id="Information">
+	<div class="span12">
+		<fieldset class="portlet " >
+	 <div class="portlet-decoration arrow-minus" onclick=" $('#hide_box_line1').slideToggle();">
+		<div class="span11"><?php echo Yii::t('emailtemplates','heading_sub_title')?></div>
+		<div class="span1 Dev-arrow"><button class="btn btn-info arrow_main" type="button"></button> </div>
+		<div class="clearfix"></div>
+	</div>
+    
+ <div class="portlet-content" id="hide_box_line1">
+ 
+    <div class="span5"> <?php echo $form->textFieldRow(
+           $model[1],'title', //'readonly'=>'readonly'
+           array('rel'=>'tooltip','data-toggle'=>"tooltip",'data-placement'=>"right",)
+       ); ?> </div>
+       
+
+       
+	<div class="span5"> <?php 
+		echo $form->textFieldRow(
+           $model[0],
+           'keywords',
+           array('rel'=>'tooltip','data-toggle'=>"tooltip",'data-placement'=>"right",)); ?> 
+     </div>
+       
+	<div class="span5"> <?php
+	   echo $form->textFieldRow(
+           $model[1],
+           'subject',
+           array('rel'=>'tooltip','data-toggle'=>"tooltip",'data-placement'=>"right",)
+       ); ?> </div>
+	<div class="span5"> <?php 
+		 echo $form->checkBoxRow($model[0],'html',
+            array('rel'=>'tooltip','data-toggle'=>"tooltip",'data-placement'=>"right",));?> 
+    </div>
+       
+       </div>
+   </fieldset>
+   
+    <fieldset class="portlet" >
+		 <div class="portlet-decoration arrow-minus" onclick=" $('#hide_box_line2').slideToggle();">
+			<div class="span11"><?php echo Yii::t('emailtemplates','entry_description')?></div>
+			<div class="span1 Dev-arrow"><button class="btn btn-info arrow_main" type="button"></button> </div>
+			<div class="clearfix"></div>
+	    </div>
+		<div class="portlet-content" id="hide_box_line2">
+			<div class="span11"> <?php 
+			if($_GET['id']!=1){
+				$this->widget('bootstrap.widgets.TbCKEditor',
+				array('editorOptions'=>array('height'=>'100px','width'=>'100%',),
+				'model'=> '$model[1]',
+				'name' => 'EmailTemplateDescription[description]',
+				'id'=>'EmailTemplateDescription_description',
+				'value'=>$model[1]->description
+				)
+				);  echo $form->error($model[1],'description');
+				//echo '</div>';
+			}else
+			{
+				echo $form->textAreaRow(
+					$model[1],'description', array('rel'=>'tooltip','data-toggle'=>"tooltip",'data-placement'=>"right","rows"=>"20","cols"=>"50")
+				);	
+			}
+            ?>
+			</div>
+       </div>
+  		 </fieldset>
+ 	</div>  
+  </div>
+</div>

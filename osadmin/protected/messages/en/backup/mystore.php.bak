@@ -1,0 +1,24 @@
+<?php
+// Heading
+$_['heading_title']          = 'Attributes';
+$_['heading_sub_title']          = 'Attributes';
+
+// Text
+$_['text_success']           = 'Success: You have modified attributes!';
+
+// Column
+$_['column_name']            = 'Attribute Name';
+$_['column_attribute_group'] = 'Attribute Group';
+$_['column_sort_order']      = 'Sort Order';
+$_['column_action']          = 'Action';
+
+// Entry
+$_['entry_MystoreForm_CONFIG_STORE_NAME'] 		= 'Store Name';
+
+
+// Error
+$_['error_product_warning']         = 'Warning: This attribute cannot be deleted as it is currently assigned to %s products!';
+
+return $_;
+
+?>

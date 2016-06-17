@@ -1,0 +1,103 @@
+    <div class="tab-pane active" id="Information">
+        <div class="span12">
+            <fieldset class="portlet" >
+                <div class="portlet-decoration arrow-minus" onclick=" $('#hide_box_line1').slideToggle();">
+                    <div class="span11"><?php echo Yii::t('pages',
+        'heading_sub_title') ?></div>
+                    <div class="span1 Dev-arrow"><button class="btn btn-info arrow_main" type="button"></button> </div>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="portlet-content" id="hide_box_line1">
+                    <div class="span5">	<?php
+                        echo $form->textFieldRow(
+                                $model[1], 'title',
+                                array('rel' => 'tooltip', 
+                            'data-toggle' => "tooltip", 'data-placement' => "right",)
+                        );
+                        ?></div>
+                    <div class="span5">	<?php
+                        echo $form->textFieldRow(
+                                $model[0], 'sort_order',
+                                array('rel' => 'tooltip',
+                            'data-toggle' => "tooltip", 'data-placement' => "right",)
+                        );
+                        ?></div>
+                    <div class="span5"> <?php
+                        echo $form->radioButtonListRow($model[0], 'status',
+                                array('1' => 'Enable', '0' => 'Disable'));
+                        ?></div>
+                </div>
+            </fieldset>
+            <div class="span12">
+                <fieldset class="portlet" >
+                    <div class="portlet-decoration arrow-minus" onclick=" $('#hide_box_line2').slideToggle();">
+                        <div class="span11"><?php echo Library::flag() . Yii::t('pages',
+                                'entry_description') ?> </div>
+                        <div class="span1 Dev-arrow"><button class="btn btn-info arrow_main" type="button"></button> </div>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="portlet-content" id="hide_box_line2">
+                        <?php
+                        //echo $form->labelEx($model[0],'description').'<div class="controls">';
+                        $this->widget(
+                                'bootstrap.widgets.TbCKEditor',
+                                array(
+                            'editorOptions' => array('height' => '100px',
+                            ),
+                            'model' => '$model[1]',
+                            'name' => 'PageDescription[description]',
+                            'id' => 'PageDescription_description',
+                            'value' => $model[1]->description
+                                )
+                        );
+                        echo $form->error($model[1], 'description');
+                        echo '</div>';
+                        ?>
+                    </div>
+                </fieldset>
+            </div>  
+            <div class="span12">
+                <fieldset class="portlet" >
+
+                    <div class="portlet-decoration arrow-minus" onclick=" $('#hide_box_line3').slideToggle();">
+                        <div class="span11"><?php echo Yii::t('pages',
+                                'heading_sub_title_seo') ?> </div>
+                        <div class="span1 Dev-arrow"><button class="btn btn-info arrow_main" id="hide_box_btn3" type="button"></button> </div>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="portlet-content" id="hide_box_line3">
+                        <div class="span5"> <?php
+                            echo $form->textFieldRow(
+                                    $model[1], 'meta_title',
+                                    array('rel' => 'tooltip',
+                                'data-toggle' => "tooltip", 'data-placement' => "right",)
+                            );
+                        ?> </div>
+                        <div class="span5"> <?php
+                            echo $form->textFieldRow(
+                                    $model[1], 'meta_keywords',
+                                    array('rel' => 'tooltip',
+                                'data-toggle' => "tooltip", 'data-placement' => "right",)
+                            );
+                            ?> </div>
+                        <div class="span11"> <?php
+                            echo $form->textAreaRow($model[1],
+                                    'meta_description', array('rows' => 4),
+                                    array('rel' => 'tooltip',
+                                'data-toggle' => "tooltip", 'data-placement' => "right",)
+                            );
+                            ?> </div>
+                        <div class="span11"> 
+<?php
+echo $form->textFieldRow(
+        $model[2], 'string',
+        array('rel' => 'tooltip',  'data-toggle' => "tooltip",
+    'data-placement' => "right",)
+);
+?>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>  
+        </div>
+    </div>

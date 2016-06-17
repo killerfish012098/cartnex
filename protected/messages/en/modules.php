@@ -1,0 +1,26 @@
+<?php
+// Heading 
+$_['heading_title_account']         		= 'Account';
+$_['heading_title_manufacturer']         	= 'manufacturer';
+$_['heading_title_recentlyviewed']         	= 'Recently Viewed Products';
+$_['heading_title_bestsellers']         	= 'Best Selling Products';
+$_['heading_title_featured']         		= 'Featured Products';
+$_['heading_title_latest']         			= 'Latest Products';
+$_['heading_title_special']         		= 'Special Products';
+$_['heading_title_categoryproducts']        = 'Category Products';
+
+// labels
+$_['label_home']          					= 'Home';
+$_['label_login']          					= 'Login';
+$_['label_register']          				= 'Register';
+$_['label_profile']          				= 'Profile';
+$_['label_address']          				= 'Address';
+$_['label_forgotpassword']          		= 'Forgot Password';
+$_['label_wishlist']          				= 'Wishlist(count)';
+$_['label_orderhistory']          			= 'Order Histroy';
+$_['label_logout']          				= 'Logout';
+
+// Text
+$_['text_account']          				= 'Account';
+return $_;
+?>

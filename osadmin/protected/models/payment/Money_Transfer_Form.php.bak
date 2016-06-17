@@ -1,0 +1,32 @@
+<?php
+return array('title' => 'Money Transfer',
+'id'=>'payment-gateway',
+ 'showErrorSummary'  => true,
+'elements' => array(
+    
+'PAYMENT_MT_TITLE' => array(
+'type' => 'text',
+'maxlength' => '80'
+),
+'PAYMENT_MT_SORT_ORDER' => array(
+'type' => 'text','hint' => 'If you want a reply, you must...','maxlength' => '80'
+),
+'PAYMENT_MT_ORDER_STATUS_ID' => array(
+'type' => 'text',
+'maxlength' => '120'
+),
+'PAYMENT_MT_REGION' => array(
+'type' => 'text',
+'attributes' => array('rows'=>20,'cols'=>80)
+),
+'PAYMENT_MT_STATUS' => array(
+'type' => 'text',
+'attributes' => array('rows'=>20,'cols'=>80)
+)
+),
+    /*'buttons' => array(
+	'submit' => array(
+	'type' => 'submit',
+	'label' => 'Submit'
+	),),*/
+);

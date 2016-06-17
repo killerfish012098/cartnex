@@ -1,0 +1,66 @@
+<?php //echo $form->errorSummary($model[0])."".$form->errorSummary($model[1]);   ?>
+<div class="row-fluid">
+    <div class="">	
+        <div class="span2 pull-right fixed_top_buttons design_fixed_top" >
+            <?php
+            $this->widget(
+                    'bootstrap.widgets.TbButton',
+                    array(
+                'label' => 'Save',
+                'buttonType' => 'button',
+                'visible' => $this->addPerm,
+                'type' => 'info',
+                'htmlOptions'=>array(
+                        'onclick'=>'$(\'form\').submit()'),
+                    )
+            );
+            ?>
+            <?php
+            $this->widget(
+                    'bootstrap.widgets.TbButton',
+                    array(
+                'label' => 'Cancel',
+                'type' => 'danger',
+                'url' => $this->createUrl('payment/index'))
+            );
+            ?>
+        </div>
+    </div>
+
+    <style>
+        .hover-links { position: relative; display:block;} .hover-links:hover .img-hover { display:block; }.hover-links:hover{ display:block; float:left; }
+        .img-hover { display:none; position: absolute;
+                     top: 29px; 
+                     z-index: 99; }input#Manufacturer_image{ float:left; }
+        </style>
+
+        <div class="row-fluid">
+
+        <div class="tab-pane active" id="Information">
+
+            <div class="span12 pull-left">
+                <div class="span12">
+
+
+                     <fieldset class="portlet " >
+
+                        <div class="portlet-decoration">
+                            <div class="span11">title</div>
+                            <div class="span1 Dev-arrow"><button class="btn btn-info arrow_main" id="hide_box_btn1" type="button"></button> </div>
+                            <div class="clearfix"></div>
+                        </div> 
+                        <div class="portlet-content" id="hide_box_line1">
+                            <?php
+                            echo $form;
+                            ?>
+
+                        </div>
+                     </fieldset> 
+
+                </div>  
+            </div>
+        </div>
+
+    </div>
+</div>        
+ 

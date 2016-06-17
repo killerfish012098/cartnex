@@ -1,0 +1,6 @@
+<?php
+// Heading
+$_['heading_title']          = 'Shipping Gateway';
+$_['heading_sub_title']      = 'Gateway Details';
+return $_;
+?>

@@ -1,0 +1,34 @@
+<?php
+// Heading
+$_['heading_title']          							= 'Website Settings';
+
+// Entry
+$_['entry_CONFIG_WEBSITE_DEFAULT_TIME_ZONE'] 			= 'Default Time Zone';
+$_['entry_CONFIG_WEBSITE_COPYRIGHTS'] 					= 'Copyrights ';
+$_['entry_CONFIG_WEBSITE_DEFAULT_WEIGHT'] 				= 'Default Weight';
+$_['entry_CONFIG_WEBSITE_DEFAULT_LENGTH'] 				= 'Default Length';
+$_['entry_CONFIG_WEBSITE_ADDTOCART_REDIRECT'] 			= 'Addtocart Redirect';
+$_['entry_CONFIG_WEBSITE_DEFAULT_CUSTOMER_GROUP'] 		= 'Default Customer Group';
+$_['entry_CONFIG_WEBSITE_COMPLETE_ORDER_STATUS'] 		= 'Complete Order Status<br/><span  class="tooltip-box">Set the order status the customers order must reach before they are allowed to access their downloadable products.</span>';
+$_['entry_CONFIG_WEBSITE_GOOGLE_ANALYTICS'] 			= 'Google Analytics<br/><span class="tooltip-box">Login to your <a target="_blank" href="http://www.google.com/analytics/">Google Analytics</a> account and after creating your web site profile copy and paste the analytics code into this field.</span>';
+$_['entry_CONFIG_WEBSITE_CACHE_LIFE_TIME'] 				= 'Cache Life Time';
+$_['entry_CONFIG_WEBSITE_MAINTENANCE_MODE'] 			= 'Maintenance Mode<br/><span class="tooltip-box">Prevents customers from browsing your store. They will instead see a maintenance message. If logged in as admin, you will see the store as normal.</span>';
+$_['entry_CONFIG_WEBSITE_MAINTENANCE_MESSAGE'] 			= 'Maintenance Message ';
+$_['entry_CONFIG_WEBSITE_META_TITLE']					= 'Meta Title';
+$_['entry_CONFIG_WEBSITE_META_KEYWORDS'] 				= 'Meta Keywords';
+$_['entry_CONFIG_WEBSITE_META_DESCRIPTION']				= 'Meta Description ';
+$_['entry_CONFIG_WEBSITE_PRODUCT_NAME_LIMIT']			= 'Product Name Limit ';
+$_['entry_CONFIG_WEBSITE_PRODUCT_LISTING_LABELS'] 		= 'Product Listing Labels ';
+$_['entry_CONFIG_WEBSITE_ITEMS_PER_PAGE'] 				= 'Items Per Page (Catalog)<br /> <span class="tooltip-box">Determines how many catalog items are shown per page (products, categories, etc)</span>';
+$_['entry_CONFIG_WEBSITE_ITEMS_PER_PAGE_ADMIN'] 		= 'Items Per Page (Admin)<br /> <span class="tooltip-box"> Determines how many admin items are shown per page (orders, customers, etc)</span>';
+$_['entry_CONFIG_WEBSITE_ALLOWED_FILE_TYPES'] 			= 'Allowed File Types<br /><span class="tooltip-box">Add which file types are allowed to be uploaded. Use a new line for each value.</span>';
+$_['entry_CONFIG_WEBSITE_CLEAN_TRASH_DURATION'] 		= 'Clean Trash Duration';
+$_['entry_CONFIG_WEBSITE_DEFAULT_PRODUCT_LIST_VIEW']	= 'Default Product List View';
+$_['entry_CONFIG_WEBSITE_MAIL_PROTOCOL']	= 'Mail Protocol<br /> <span class="tooltip-box">Only choose \'Mail\' unless your host has disabled the php mail function.</span>';
+$_['entry_CONFIG_WEBSITE_SMTP_HOST']	= 'Smtp Host';
+$_['entry_CONFIG_WEBSITE_SMTP_USERNAME']	= 'Smtp Username';
+$_['entry_CONFIG_WEBSITE_SMTP_PASSWORD']	= 'Smtp Password';
+$_['entry_CONFIG_WEBSITE_SMTP_PORT']	= 'Smtp Port';
+$_['entry_CONFIG_WEBSITE_SMTP_TIMEOUT']	= 'Smtp Timeout';
+$_['entry_CONFIG_WEBSITE_TEMPLATE']	= 'Template Name';
+return $_;

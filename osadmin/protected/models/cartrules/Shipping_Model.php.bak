@@ -1,0 +1,24 @@
+<?php
+class Shipping_Model extends CFormModel
+{
+    public $CARTRULE_SHIPPING_TITLE;
+    public $CARTRULE_SHIPPING_STATUS;
+    public $CARTRULE_SHIPPING_SORT_ORDER;
+
+    public function rules()
+    {
+            return array(
+                    array('CARTRULE_SHIPPING_TITLE,CARTRULE_SHIPPING_STATUS,CARTRULE_SHIPPING_SORT_ORDER','required'),
+                    );
+    }
+
+    public function attributeLabels()
+    {
+            return array('CARTRULE_SHIPPING_TITLE'=>'Title');
+    }
+
+    public function getCode()
+    {
+            return 'SHIPPING';
+    }
+}

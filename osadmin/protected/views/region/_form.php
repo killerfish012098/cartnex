@@ -1,0 +1,202 @@
+
+    <div class="tab-pane active" id="Information">
+            <div class="span12">
+                <fieldset class="portlet " >
+                    <div class="portlet-decoration arrow-minus" onclick=" $('#hide_box_line1').slideToggle();">
+                        <div class="span11"><?php echo Yii::t('regions',
+        'heading_sub_title'); ?> </div>
+                        <div class="span1 Dev-arrow"><button class="btn btn-info arrow_main"  type="button"></button> </div>
+                        <div class="clearfix"></div>	
+                    </div>
+                    <div class="portlet-content" id="hide_box_line1">
+                        <?php
+                        echo $form->textFieldRow(
+                                $model['r'], 'name',
+                                array('rel' => 'tooltip', 
+                            'data-toggle' => "tooltip",
+                            'data-placement' => "right",)
+                        );
+
+
+                        echo $form->textAreaRow($model['r'], 'description',
+                                array('rows' => 5));
+                        ?>
+
+
+                    </div>
+
+                    <div class="span12 pull-right" id="region_list">
+
+                        <?php
+                        $box = $this->beginWidget(
+                                'bootstrap.widgets.TbBox',
+                                array(
+                            'title' => Yii::t('regions', 'heading_sub_title_add'),
+                            'htmlOptions' => array('class' => 'portlet-decoration	')
+                                )
+                        );
+                        ?>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th><?php echo Yii::t('regions',
+                                'entry_country'); ?></th>
+                                    <th><?php echo Yii::t('regions',
+                                'entry_state'); ?></th>
+                                    <th  width="8%"><?php echo Yii::t('regions',
+                                'entry_action'); ?></th>
+                                </tr>
+                            </thead>
+
+                            <?php
+                            $getCounties = Country::getCountries();
+                            //$getStates = State::getStates(array('condition'=>'id_country='.$model->id_country));
+                            $row = 0;
+                            foreach ($model['rl'] as $model):
+                                ?>
+                                <tbody id='row-<?php echo $row; ?>'>
+                                    <tr >
+                                        <td ><?php
+                                            echo CHtml::dropDownList('region_list[' . $row . '][country]',
+                                                    $model->id_country,
+                                                    CHtml::listData($getCounties,
+                                                            'id_country', 'name'),
+                                                    array('onchange' => 'getStates(this.value,this.id)'));
+                                            ?></td>
+                                        <td ><?php
+                                echo CHtml::dropDownList('region_list[' . $row . '][state][]',
+                                        explode(",",$model->id_state),
+                                        CHtml::listData(State::getStates(array('condition'=>'id_country='.$model->id_country)), 'id_state',
+                                                'name'),
+                                        array('multiple' => true));
+                                ?></td>
+
+                                    <td><a onclick="$('#row-<?php echo $row; ?>').remove()" class="btn btn-danger" ><i class="delete-iconall"></i></a> </td>
+                                    </tr>
+                                </tbody>
+                                            <?php
+                                            $row++;
+                                        endforeach;
+                                        ?>
+
+
+                            <tfoot>
+                                <tr>
+                                    <td colspan="3"><?php
+                                        $this->widget(
+                                                'bootstrap.widgets.TbButton',
+                                                array(
+                                            'label' => Yii::t('regions',
+                                                    'entry_add'),
+                                            'type' => 'btn-info',
+                                            'htmlOptions' => array('onclick' => 'addOption()'),
+                                                )
+                                        );
+                                        ?></td>
+                                </tr>
+                            </tfoot>
+                        </table>
+    <?php $this->endWidget(); ?>
+                    </div>
+                </fieldset>
+
+            </div>   
+    </div>
+
+<?php
+$select = "";
+foreach ($getCounties as $country) {
+    $countrylist.="<option value='" . $country->id_country . "'>" . $country->name . "</option>";
+}
+?>
+
+    <script type='text/javascript'>
+        var row_no =<?php echo $row; ?>;
+        function addOption()
+        {
+            row = '<tbody id="row-' + row_no + '">';
+            row += '<tr>';
+            row += '<td width="200px">';
+            row += '<select id="region_list_' + row_no + '_id_country" name="region_list[' + row_no + '][country]" onchange="getStates(this.value,this.id)" >';
+            row += "<?php echo $countrylist; ?>";
+            row += '</select>';
+            row += '</td>';
+
+
+            row += '<td width="200px">';
+            row += '<select id="region_list_' + row_no + '_id_state" name="region_list[' + row_no + '][state][]" multiple  ><option value="0">None</option>';
+            row += '</select>';
+            row += '</td>';
+
+
+            //row += '<td style="width: 60px"><input width="100" type="text" id="region_list_1_name" name="region_list[' + row_no + '][country]" value="" maxlength="100"></td>';
+            //row += '<td><input width="100" type="text" id="region_list_1_sort_order" name="region_list[' + row_no + '][state]" value="" maxlength="100"></td>';
+            row += '<td> <a onclick="$(\'#row-' + row_no + '\').remove();" href="#" class="btn btn-danger" ><i class="delete-iconall"></i></a> </td>';
+            row += '</tr>';
+            row += '</tbody>';
+            $('.table tfoot').before(row);
+            row_no++;
+        }
+
+        $('select[id=\'Option_type\']').bind('change', function() {
+            if (this.value == 'select' || this.value == 'radio' || this.value == 'checkbox' || this.value == 'image') {
+                $('#region_list').show();
+            } else {
+                $('#region_list').hide();
+            }
+        });
+
+        /*function getStates(val, id)
+        {
+            //alert(val+" "+id.replace('country','state'));
+            inputId = id.replace('country', 'state');
+            $.ajax({
+                url: 'http://sun-network/osadmin/index.php/site/getStates/' + val,
+                dataType: 'json',
+                success: function(json) {
+                    var html;
+                    if (json['states'] != '')
+                    {
+                        for (i = 0; i < json['states'].length; i++)
+                        {
+                            html += '<option value="' + json['states'][i]['id_state'] + '"';
+                            html += '>' + json['states'][i]['name'] + '</option>';
+                        }
+                    } else
+                    {
+                        html += '<option value="0" selected="selected">None</option>';
+                    }
+                    $('#' + inputId).html(html);
+                }
+            });
+        }*/
+
+		function getStates(val, id)
+        {
+            //alert(val+" "+id.replace('country','state'));
+            inputId = id.replace('country', 'state');
+            $.ajax({
+                //url: 'http://sun-network/osadmin/index.php/site/getStates/' + val,
+			url: '<?php echo $this->createUrl("site/getStates");?>',
+
+				data: "id="+val,
+				type: 'get',
+                dataType: 'json',
+                success: function(json) {
+                    var html;
+                    if (json['states'] != '')
+                    {
+                        for (i = 0; i < json['states'].length; i++)
+                        {
+                            html += '<option value="' + json['states'][i]['id_state'] + '"';
+                            html += '>' + json['states'][i]['name'] + '</option>';
+                        }
+                    } else
+                    {
+                        html += '<option value="0" selected="selected">None</option>';
+                    }
+                    $('#' + inputId).html(html);
+                }
+            });
+        }
+    </script>

@@ -1,0 +1,39 @@
+<?php
+// Heading
+$_['heading_title']      	= 'Themes';
+$_['heading_sub_title']      	= 'Theme Details';
+
+// Text
+$_['text_success']       	= 'Success: You have modified manufacturers!';
+$_['text_default']       	= 'Default';
+$_['text_image_manager'] 	= 'Image Manager';
+$_['text_browse']        	= 'Browse';
+$_['text_clear']         	= 'Clear';
+$_['text_percent']       	= 'Percentage';
+$_['text_amount']        	= 'Fixed Amount';
+
+
+// Column
+$_['column_name']        	= 'Manufacturer Name';
+$_['column_sort_order']  	= 'Sort Order';
+$_['column_status']      	= 'Status';
+
+
+// Entry
+$_['entry_name']         	= 'Manufacturer Name';
+$_['entry_meta_title']   	= 'Meta title';
+$_['entry_meta_keywords']	= 'Meta keywords';
+$_['entry_meta_description']= 'Meta description';
+$_['entry_image']        	= 'Logo';
+$_['entry_sort_order']      = 'Sort Order';
+$_['entry_status']        	= 'Status';
+
+
+
+// Error
+$_['error_permission']   		= 'Warning: You do not have permission to modify manufacturers!';
+$_['error_name']         		= 'Manufacturer Name must be between 3 and 64 characters!';
+$_['message_manufacturer_alert']= 'Warning: This manufacturer cannot be deleted as it is currently assigned to {count} products!';
+
+return $_;
+?>
