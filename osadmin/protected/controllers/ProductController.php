@@ -509,6 +509,7 @@ class ProductController extends Controller {
     }
     
     public function actionDelete() {//($id)
+        echo "hello";exit;
         $arrayRowId = is_array(Yii::app()->request->getParam('id')) ? Yii::app()->request->getParam('id') : array(
             Yii::app()->request->getParam('id'));
         if (sizeof($arrayRowId) > 0) {
